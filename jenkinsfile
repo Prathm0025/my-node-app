@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+    environment {
+        DOCKER_HUB_REPO = 'prathm0025/my-node-app'
+        DOCKER_HUB_CREDS = 'docker-hub-credentials-id'
+    }
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git branch: 'master', url: 'https://github.com/Prathm0025/my-node-app.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                script {
+                    // Build the Docker image
+                    docker.build("${DOCKER_HUB_REPO}:$BUILD_NUMBER")
+                }
+            }
+        }
+        stage('Push to Docker Hub') {
+            steps {
+                script {
+                    docker.withRegistry('', DOCKER_HUB_CREDS) {
+                        docker.image("${DOCKER_HUB_REPO}:$BUILD_NUMBER").push()
+                    }
+                }
+            }
+        }
+    }
+}
+
