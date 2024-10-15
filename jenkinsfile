@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
-                    docker.build("${DOCKER_HUB_REPO}:$BUILD_NUMBER")
+                    docker.build("${DOCKER_HUB_REPO}:v$BUILD_NUMBER")
                 }
             }
         }
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('', DOCKER_HUB_CREDS) {
-                        docker.image("${DOCKER_HUB_REPO}:$BUILD_NUMBER").push()
+                        docker.image("${DOCKER_HUB_REPO}:v$BUILD_NUMBER").push()
                     }
                 }
             }
