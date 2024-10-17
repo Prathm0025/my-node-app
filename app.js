@@ -46,7 +46,7 @@ app.get('/', (req, res) => {
     <body>
         <div>
             <h1>Hello!</h1>
-            <p>The only way to do great work is to do what you love...🌈</p>
+            <p>The only way to do great work is to love what you do...🌈</p>
         </div>
     </body>
     </html>
