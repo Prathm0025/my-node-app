@@ -45,8 +45,8 @@ app.get('/', (req, res) => {
     </head>
     <body>
         <div>
-            <h1>Hello from Node.js!</h1>
-            <p>Enjoy the colorful experience 🌈</p>
+            <h1>Hello!</h1>
+            <p>The only way to do great work is to do what you love...🌈</p>
         </div>
     </body>
     </html>
